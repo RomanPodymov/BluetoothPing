@@ -6,12 +6,11 @@
 //  Copyright © 2024 BluetoothPing. All rights reserved.
 //
 
-import CoreBluetooth
+import Dispatch
 import Eureka
 import Resolver
 import RxBluetoothKit
 import RxSwift
-import UIKit
 
 struct CharacteristicsScreenData {
     let peripheral: Peripheral

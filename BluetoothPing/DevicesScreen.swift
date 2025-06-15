@@ -11,7 +11,6 @@ import Eureka
 import Resolver
 import RxBluetoothKit
 import RxSwift
-import UIKit
 
 final class DevicesScreen: FormViewController {
     private unowned var section: Section!

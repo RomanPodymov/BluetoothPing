@@ -146,7 +146,7 @@ extension CharacteristicScreen: CharacteristicDelegate {
     private func ping(data: CharacteristicScreenData, bytesCount: Int) {
         promise(data: data, bytesCount: bytesCount, bytes: [0])
             .subscribe(
-                onSuccess: { [weak self] in
+                onSuccess: {
                     print($0)
                 },
                 onFailure: nil,
@@ -162,7 +162,11 @@ extension CharacteristicScreen: CharacteristicDelegate {
             if nextResult.count > bytesCount || self?.isCancelled ?? false {
                 return Observable.just([]).asSingle()
             } else {
-                return self?.promise(data: data, bytesCount: bytesCount, bytes: nextResult) ?? Observable.just([]).asSingle()
+                return self?.promise(
+                    data: data,
+                    bytesCount: bytesCount,
+                    bytes: nextResult
+                ) ?? Observable.just([]).asSingle()
             }
         }
     }

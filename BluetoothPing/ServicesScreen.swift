@@ -8,7 +8,6 @@
 
 import CoreBluetooth
 import Eureka
-import Foundation
 import Resolver
 import RxBluetoothKit
 import RxSwift
@@ -35,9 +34,7 @@ final class ServicesScreen: FormViewController {
                         onError: {
                             print($0)
                         },
-                        onCompleted: {
-
-                        }
+                        onCompleted: {}
                     )
                     .disposed(by: disposeBag)
             }
@@ -69,9 +66,7 @@ final class ServicesScreen: FormViewController {
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
 
-        if parent == nil, let peripheral = data?.peripheral {
-
-        }
+        if parent == nil, let peripheral = data?.peripheral {}
     }
 }
 
