@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  BluetoothPing
+
+  Created by Roman Podymov on 10.05.2024.
+  
+*/
+
+"section.device" = "Zařízení";
+"section.service" = "Služby";
+"section.characteristics" = "Charakteristiky";
+"section.characteristic" = "Charakteristika";
+"section.characteristic_value" = "Hodnota charakteristiky";
+"section.characteristic_max" = "Max charakteristiky (s/bez odpovědi)";
+"section.characteristic_write_with_response" = "Napsat něco s odpovědí";
+"section.characteristic_write_without_response" = "Napsat něco bez odpovědi";
+"section.characteristic_error_read" = "Nemůžu číst";
+"section.characteristic_error_write" = "Nemůžu psat";
