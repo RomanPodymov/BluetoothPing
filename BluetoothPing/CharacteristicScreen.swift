@@ -197,10 +197,11 @@ extension Section {
 }
 
 func generateData(previousResult: [UInt8] = [0]) -> [UInt8] {
-    let last = previousResult.last!
-    if last == UInt8.max {
-        return previousResult + [0]
-    } else {
-        return previousResult.prefix(previousResult.count - 1) + [last + 1]
-    }
+    previousResult.last.map { last in
+        if last == UInt8.max {
+            return previousResult + [0]
+        } else {
+            return previousResult.prefix(previousResult.count - 1) + [last + 1]
+        }
+    } ?? [0]
 }
