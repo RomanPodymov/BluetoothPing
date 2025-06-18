@@ -18,8 +18,6 @@ struct ServicesScreenData {
 }
 
 final class ServicesScreen: BasicScreen {
-    private unowned var section: Section!
-
     public var data: ServicesScreenData? {
         didSet {
             if let data {

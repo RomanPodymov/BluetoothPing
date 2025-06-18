@@ -15,11 +15,10 @@ import RxSwift
 class BasicScreen: FormViewController {
     let disposeBag = DisposeBag()
     @Injected var centralManager: CentralManagerInterface
+    unowned var section: Section!
 }
 
 final class DevicesScreen: BasicScreen {
-    private unowned var section: Section!
-
     private var scannedPeripherals: [ScannedPeripheral] = [] {
         didSet {
             let per = scannedPeripherals.map(\.peripheral)

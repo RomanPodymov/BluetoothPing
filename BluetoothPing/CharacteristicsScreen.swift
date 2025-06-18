@@ -18,8 +18,6 @@ struct CharacteristicsScreenData {
 }
 
 final class CharacteristicsScreen: BasicScreen {
-    private unowned var section: Section!
-
     var data: CharacteristicsScreenData? {
         didSet {
             if let data {

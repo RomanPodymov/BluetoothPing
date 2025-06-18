@@ -25,8 +25,6 @@ enum CharacteristicScreenTag: String, CaseIterable {
 }
 
 final class CharacteristicScreen: BasicScreen {
-    private unowned var section: Section!
-
     var maxSizes: MaxDataSize? {
         didSet {
             createRows(
