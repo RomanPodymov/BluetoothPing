@@ -17,12 +17,9 @@ struct CharacteristicsScreenData {
     let service: Service
 }
 
-final class CharacteristicsScreen: FormViewController {
+final class CharacteristicsScreen: BasicScreen {
     private unowned var section: Section!
 
-    @Injected private var centralManager: CentralManagerInterface
-
-    private let disposeBag = DisposeBag()
     var data: CharacteristicsScreenData? {
         didSet {
             if let data {

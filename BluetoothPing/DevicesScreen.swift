@@ -12,12 +12,14 @@ import Resolver
 import RxBluetoothKit
 import RxSwift
 
-final class DevicesScreen: FormViewController {
+class BasicScreen: FormViewController {
+    let disposeBag = DisposeBag()
+    @Injected var centralManager: CentralManagerInterface
+}
+
+final class DevicesScreen: BasicScreen {
     private unowned var section: Section!
 
-    @Injected private var centralManager: CentralManagerInterface
-
-    private let disposeBag = DisposeBag()
     private var scannedPeripherals: [ScannedPeripheral] = [] {
         didSet {
             let per = scannedPeripherals.map(\.peripheral)

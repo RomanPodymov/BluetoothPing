@@ -17,12 +17,9 @@ struct ServicesScreenData {
     let peripheral: Peripheral
 }
 
-final class ServicesScreen: FormViewController {
+final class ServicesScreen: BasicScreen {
     private unowned var section: Section!
 
-    @Injected private var centralManager: CentralManagerInterface
-
-    private let disposeBag = DisposeBag()
     public var data: ServicesScreenData? {
         didSet {
             if let data {

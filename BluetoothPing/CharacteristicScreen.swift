@@ -24,10 +24,8 @@ enum CharacteristicScreenTag: String, CaseIterable {
     case writeWithResponse
 }
 
-final class CharacteristicScreen: FormViewController {
+final class CharacteristicScreen: BasicScreen {
     private unowned var section: Section!
-
-    @Injected private var centralManager: CentralManagerInterface
 
     var maxSizes: MaxDataSize? {
         didSet {
@@ -47,7 +45,6 @@ final class CharacteristicScreen: FormViewController {
         }
     }
 
-    private let disposeBag = DisposeBag()
     var data: CharacteristicScreenData? {
         didSet {
             if let data {
@@ -199,9 +196,9 @@ extension Section {
 func generateData(previousResult: [UInt8] = [0]) -> [UInt8] {
     previousResult.last.map { last in
         if last == UInt8.max {
-            return previousResult + [0]
+            previousResult + [0]
         } else {
-            return previousResult.prefix(previousResult.count - 1) + [last + 1]
+            previousResult.prefix(previousResult.count - 1) + [last + 1]
         }
     } ?? [0]
 }
