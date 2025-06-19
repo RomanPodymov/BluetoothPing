@@ -39,10 +39,10 @@ targets:
           UIInterfaceOrientationPortraitUpsideDown
         ]
     preBuildScripts:
-      - script: "mint run swiftgen"
+      - script: "/opt/homebrew/bin/mint run swiftgen"
         name: SwiftGen
     postCompileScripts:
-      - script: "mint run swiftformat . --swiftversion 5.9"
+      - script: "/opt/homebrew/bin/mint run swiftformat . --swiftversion 5.9"
         name: SwiftFormat
-      - script: "mint run swiftlint"
+      - script: "/opt/homebrew/bin/mint run swiftlint"
         name: SwiftLint
