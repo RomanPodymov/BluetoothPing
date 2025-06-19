@@ -9,7 +9,5 @@
 import XCTest
 
 class BluetoothPingTests: XCTestCase {
-    func test() {
-        
-    }
+    func test() {}
 }
