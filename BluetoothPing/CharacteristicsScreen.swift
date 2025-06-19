@@ -41,7 +41,7 @@ final class CharacteristicsScreen: BasicScreen {
                     self?.onCharacteristicsReceived($0)
                 },
                 onFailure: nil,
-                onDisposed: nil,
+                onDisposed: nil
             )
             .disposed(by: disposeBag)
     }
@@ -62,7 +62,7 @@ extension CharacteristicsScreen {
                     navigationController?.pushViewController(controller, animated: true)
                     controller.data = .init(
                         peripheral: data.peripheral,
-                        characteristic: characteristic,
+                        characteristic: characteristic
                     )
                 }
             }

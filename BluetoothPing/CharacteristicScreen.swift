@@ -29,7 +29,7 @@ final class CharacteristicScreen: BasicScreen {
         didSet {
             createRows(
                 value: readValue ?? "",
-                maxSizes: maxSizes ?? .init(),
+                maxSizes: maxSizes ?? .init()
             )
         }
     }
@@ -38,7 +38,7 @@ final class CharacteristicScreen: BasicScreen {
         didSet {
             createRows(
                 value: readValue ?? "",
-                maxSizes: maxSizes ?? .init(),
+                maxSizes: maxSizes ?? .init()
             )
         }
     }
@@ -47,19 +47,19 @@ final class CharacteristicScreen: BasicScreen {
         didSet {
             if let data {
                 centralManager.readCharacteristicValue(
-                    characteristic: data.characteristic,
+                    characteristic: data.characteristic
                 )
                 .subscribe(
                     onSuccess: { [weak self] in
                         self?.readValue = $0
                     },
                     onFailure: nil,
-                    onDisposed: nil,
+                    onDisposed: nil
                 ).disposed(by: disposeBag)
 
                 maxSizes = centralManager.maximumWriteValueLength(
                     peripheral: data.peripheral,
-                    characteristic: data.characteristic,
+                    characteristic: data.characteristic
                 )
             }
         }
@@ -121,18 +121,18 @@ extension CharacteristicScreen: @preconcurrency CharacteristicDelegate {
             section <<< ButtonRow(CharacteristicScreenTag.writeWithResponse.rawValue) { [weak self] row in
                 row.title = L10n.Section.characteristicWriteWithResponse
                 row.onCellSelection { [weak self] _, _ in
-                    guard let self, let data = `self`.data else { return }
+                    guard let self, let data = self.data else { return }
 
-                    `self`.ping(data: data, bytesCount: `self`.maxSizes?.withResponse ?? 0)
+                    self.ping(data: data, bytesCount: self.maxSizes?.withResponse ?? 0)
                 }
             }
 
             section <<< ButtonRow(CharacteristicScreenTag.writeWithoutResponse.rawValue) { [weak self] row in
                 row.title = L10n.Section.characteristicWriteWithoutResponse
                 row.onCellSelection { [weak self] _, _ in
-                    guard let self, let data = `self`.data else { return }
+                    guard let self, let data = self.data else { return }
 
-                    `self`.ping(data: data, bytesCount: `self`.maxSizes?.withoutResponse ?? 0)
+                    self.ping(data: data, bytesCount: self.maxSizes?.withoutResponse ?? 0)
                 }
             }
         }
@@ -145,14 +145,14 @@ extension CharacteristicScreen: @preconcurrency CharacteristicDelegate {
                     print($0)
                 },
                 onFailure: nil,
-                onDisposed: nil,
+                onDisposed: nil
             ).disposed(by: disposeBag)
     }
 
     private func promise(data: CharacteristicScreenData, bytesCount: Int, bytes: [UInt8]) -> Single<[UInt8]> {
         promise(
             for: bytes,
-            data: data,
+            data: data
         ).flatMap { [weak self] nextResult in
             if nextResult.count > bytesCount || self?.isCancelled ?? false {
                 return Observable.just([]).asSingle()
@@ -160,7 +160,7 @@ extension CharacteristicScreen: @preconcurrency CharacteristicDelegate {
                 return self?.promise(
                     data: data,
                     bytesCount: bytesCount,
-                    bytes: nextResult,
+                    bytes: nextResult
                 ) ?? Observable.just([]).asSingle()
             }
         }
@@ -170,13 +170,13 @@ extension CharacteristicScreen: @preconcurrency CharacteristicDelegate {
         centralManager.writeCharacteristicValueWithoutResponse(
             peripheral: data.peripheral,
             characteristic: data.characteristic,
-            value: Data(result),
+            value: Data(result)
         ).map {
             let nextResult = generateData(previousResult: result)
             return nextResult
         }.delay(
             .milliseconds(10),
-            scheduler: Self.scheduler,
+            scheduler: Self.scheduler
         )
     }
 
