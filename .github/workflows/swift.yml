@@ -20,22 +20,6 @@ jobs:
           xcode-version: 16.2
       - name: Install Mint
         run: brew install mint
-      - name: Cache Mint modules
-        id: cache-mint
-        uses: actions/cache@v4.2.3
-        env:
-          cache-name: cache-mint-modules
-        with:
-          path: ~/.mint
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/Mintfile') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - if: ${{ steps.cache-mint.outputs.cache-hit != 'true' }}
-        name: List the state of Mint modules
-        continue-on-error: true
-        run: mint list
       - name: Folder for swiftgen
         run: mkdir BluetoothPing/Generated && touch BluetoothPing/Generated/Strings.swift
       - name: Generate Xcode project
