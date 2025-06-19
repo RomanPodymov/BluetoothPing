@@ -82,7 +82,7 @@ final class CharacteristicScreen: BasicScreen {
     }
 }
 
-extension CharacteristicScreen: CharacteristicDelegate {
+extension CharacteristicScreen: @preconcurrency CharacteristicDelegate {
     func onCharacteristicValueReceived(_ value: String) {
         readValue = value
     }
@@ -121,18 +121,18 @@ extension CharacteristicScreen: CharacteristicDelegate {
             section <<< ButtonRow(CharacteristicScreenTag.writeWithResponse.rawValue) { [weak self] row in
                 row.title = L10n.Section.characteristicWriteWithResponse
                 row.onCellSelection { [weak self] _, _ in
-                    guard let self, let data else { return }
+                    guard let self, let data = self.data else { return }
 
-                    ping(data: data, bytesCount: maxSizes?.withResponse ?? 0)
+                    self.ping(data: data, bytesCount: self.maxSizes?.withResponse ?? 0)
                 }
             }
 
             section <<< ButtonRow(CharacteristicScreenTag.writeWithoutResponse.rawValue) { [weak self] row in
                 row.title = L10n.Section.characteristicWriteWithoutResponse
                 row.onCellSelection { [weak self] _, _ in
-                    guard let self, let data else { return }
+                    guard let self, let data = self.data else { return }
 
-                    ping(data: data, bytesCount: maxSizes?.withoutResponse ?? 0)
+                    self.ping(data: data, bytesCount: self.maxSizes?.withoutResponse ?? 0)
                 }
             }
         }

@@ -11,7 +11,7 @@ import RxBluetoothKit
 import RxSwift
 
 final class TestCentralManager {
-    static let shared = TestCentralManager()
+    @MainActor static let shared = TestCentralManager()
 
     private init() {}
 

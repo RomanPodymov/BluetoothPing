@@ -11,6 +11,7 @@ import RxBluetoothKit
 import RxSwift
 
 final class CentralManager: NSObject {
+    @MainActor
     static let shared = CentralManager()
 
     private var centralManager: CBCentralManager!
