@@ -1,3 +1,4 @@
 yonaskolb/xcodegen@2.43.0
 realm/swiftlint@0.59.1
-nicklockwood/swiftformat@0.56.1
+nicklockwood/swiftformat@0.56.2
+swiftgen/swiftgen@6.6.3
