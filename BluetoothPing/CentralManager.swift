@@ -41,7 +41,7 @@ extension CentralManager: CentralManagerInterface {
     }
 
     public final func readCharacteristicValue(
-        characteristic: Characteristic
+        characteristic: Characteristic,
     ) -> Single<String> {
         characteristic.readValue().map {
             String(data: $0.value ?? .init(), encoding: .utf8) ?? ""
@@ -51,13 +51,13 @@ extension CentralManager: CentralManagerInterface {
     func writeCharacteristicValueWithoutResponse(
         peripheral: Peripheral,
         characteristic: Characteristic,
-        value: Data
+        value: Data,
     ) -> Single<Void> {
         peripheral.writeValue(
             value,
             for: characteristic,
             type: .withoutResponse,
-            canSendWriteWithoutResponseCheckEnabled: true
+            canSendWriteWithoutResponseCheckEnabled: true,
         ).map { _ in
             ()
         }
@@ -66,13 +66,13 @@ extension CentralManager: CentralManagerInterface {
     func writeCharacteristicValueWithResponse(
         peripheral: Peripheral,
         characteristic: Characteristic,
-        value: Data
+        value: Data,
     ) -> Single<Void> {
         peripheral.writeValue(
             value,
             for: characteristic,
             type: .withResponse,
-            canSendWriteWithoutResponseCheckEnabled: true
+            canSendWriteWithoutResponseCheckEnabled: true,
         ).map { _ in
             ()
         }
@@ -85,7 +85,7 @@ extension CentralManager: CentralManagerInterface {
                 nil,
             withoutResponse: characteristic.properties.contains(.writeWithoutResponse) ?
                 peripheral.maximumWriteValueLength(for: .withoutResponse) :
-                nil
+                nil,
         )
     }
 

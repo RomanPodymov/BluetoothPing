@@ -15,7 +15,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(
         _: UIApplication,
-        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil
+        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil,
     ) -> Bool {
         Resolver.register { CentralManager.shared }
             .implements(CentralManagerInterface.self)

@@ -38,7 +38,7 @@ extension TestCentralManager: CentralManagerInterface {
     func writeCharacteristicValueWithoutResponse(
         peripheral _: Peripheral,
         characteristic _: Characteristic,
-        value _: Data
+        value _: Data,
     ) -> Single<Void> {
         Observable.just(()).asSingle()
     }
@@ -46,7 +46,7 @@ extension TestCentralManager: CentralManagerInterface {
     func writeCharacteristicValueWithResponse(
         peripheral _: Peripheral,
         characteristic _: Characteristic,
-        value _: Data
+        value _: Data,
     ) -> Single<Void> {
         Observable.just(()).asSingle()
     }

@@ -29,7 +29,7 @@ final class ServicesScreen: BasicScreen {
                         onError: {
                             print($0)
                         },
-                        onCompleted: {}
+                        onCompleted: {},
                     )
                     .disposed(by: disposeBag)
             }
@@ -45,7 +45,7 @@ final class ServicesScreen: BasicScreen {
                 onFailure: {
                     print($0)
                 },
-                onDisposed: nil
+                onDisposed: nil,
             )
             .disposed(by: disposeBag)
     }
