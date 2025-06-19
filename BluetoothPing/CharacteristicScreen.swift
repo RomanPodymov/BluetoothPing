@@ -121,18 +121,18 @@ extension CharacteristicScreen: @preconcurrency CharacteristicDelegate {
             section <<< ButtonRow(CharacteristicScreenTag.writeWithResponse.rawValue) { [weak self] row in
                 row.title = L10n.Section.characteristicWriteWithResponse
                 row.onCellSelection { [weak self] _, _ in
-                    guard let self, let data = self.data else { return }
+                    guard let self, let data = `self`.data else { return }
 
-                    self.ping(data: data, bytesCount: self.maxSizes?.withResponse ?? 0)
+                    `self`.ping(data: data, bytesCount: `self`.maxSizes?.withResponse ?? 0)
                 }
             }
 
             section <<< ButtonRow(CharacteristicScreenTag.writeWithoutResponse.rawValue) { [weak self] row in
                 row.title = L10n.Section.characteristicWriteWithoutResponse
                 row.onCellSelection { [weak self] _, _ in
-                    guard let self, let data = self.data else { return }
+                    guard let self, let data = `self`.data else { return }
 
-                    self.ping(data: data, bytesCount: self.maxSizes?.withoutResponse ?? 0)
+                    `self`.ping(data: data, bytesCount: `self`.maxSizes?.withoutResponse ?? 0)
                 }
             }
         }
