@@ -63,6 +63,5 @@ protocol CentralManagerInterface: AnyObject {
         characteristic: Characteristic,
         value: Data
     ) -> Single<Void>
-    func disconnect(_ peripheral: RPPeripheral)
     func maximumWriteValueLength(peripheral: Peripheral, characteristic: Characteristic) -> MaxDataSize
 }

@@ -16,8 +16,6 @@ final class CentralManager: NSObject {
 
     private var centralManager: CBCentralManager!
 
-    private var devices: Set<CBPeripheral> = []
-
     private let manager = RxBluetoothKit.CentralManager()
     private var connection: Disposable?
     private let scannedPeripheralSubject = PublishSubject<ScannedPeripheral>()
@@ -87,12 +85,5 @@ extension CentralManager: CentralManagerInterface {
                 peripheral.maximumWriteValueLength(for: .withoutResponse) :
                 nil
         )
-    }
-
-    public final func disconnect(_ peripheral: RPPeripheral) {
-        guard let device = devices.first(where: { $0.identifier == peripheral.identifier }) else {
-            return
-        }
-        centralManager.cancelPeripheralConnection(device)
     }
 }

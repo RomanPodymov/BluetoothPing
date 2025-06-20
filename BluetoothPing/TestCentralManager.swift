@@ -54,6 +54,4 @@ extension TestCentralManager: CentralManagerInterface {
     func maximumWriteValueLength(peripheral _: Peripheral, characteristic _: Characteristic) -> MaxDataSize {
         .init()
     }
-
-    func disconnect(_: RPPeripheral) {}
 }
