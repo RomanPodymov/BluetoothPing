@@ -1,0 +1,6 @@
+strings:
+  inputs:
+    - BluetoothPing/en.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: BluetoothPing/Generated/Strings.swift

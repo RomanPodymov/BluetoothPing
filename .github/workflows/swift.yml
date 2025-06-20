@@ -37,7 +37,7 @@ jobs:
         continue-on-error: true
         run: mint list
       - name: Folder for swiftgen
-        run: mkdir Bookie/Generated && touch Bookie/Generated/Strings.swift
+        run: mkdir BluetoothPing/Generated && touch BluetoothPing/Generated/Strings.swift
       - name: Generate Xcode project
         run: mint bootstrap && mint run xcodegen
       - name: Build and test iOS
