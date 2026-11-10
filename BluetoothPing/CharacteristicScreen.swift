@@ -172,8 +172,7 @@ extension CharacteristicScreen: @preconcurrency CharacteristicDelegate {
             characteristic: data.characteristic,
             value: Data(result)
         ).map {
-            let nextResult = generateData(previousResult: result)
-            return nextResult
+            generateData(previousResult: result)
         }.delay(
             .milliseconds(10),
             scheduler: Self.scheduler

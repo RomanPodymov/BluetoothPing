@@ -2,7 +2,7 @@ name: BluetoothPing
 options:
   bundleIdPrefix: com.bluetoothping
   deploymentTarget:
-    iOS: 12.0
+    iOS: 15.0
   xcodeVersion: "16.2"
 packages:
   RxBluetoothKit:
