@@ -18,7 +18,7 @@ struct ServicesScreenData {
 }
 
 final class ServicesScreen: BasicScreen {
-    public var data: ServicesScreenData? {
+    var data: ServicesScreenData? {
         didSet {
             if let data {
                 centralManager.connect(to: data.peripheral)

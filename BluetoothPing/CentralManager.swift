@@ -38,7 +38,7 @@ extension CentralManager: CentralManagerInterface {
         peripheral.establishConnection()
     }
 
-    public final func readCharacteristicValue(
+    final func readCharacteristicValue(
         characteristic: Characteristic
     ) -> Single<String> {
         characteristic.readValue().map {

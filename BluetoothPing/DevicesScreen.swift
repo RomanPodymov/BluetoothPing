@@ -46,9 +46,7 @@ final class DevicesScreen: BasicScreen {
 extension DevicesScreen {
     func onPeripheralReceived(_ peripheral: Peripheral) {
         DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-
-            guard !section.contains(where: {
+            guard let self, !section.contains(where: {
                 $0.tag == peripheral.identifier.uuidString
             }) else {
                 return
